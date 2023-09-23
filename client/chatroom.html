@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/dist/style.css" />
+</head>
+
+<body class="h-screen w-screen flex justify-center items-center flex-col bg-gray-200">
+    <h1 class="text-4xl m-5">Temporary chat-Room</h1>
+
+    <!-- user box -->
+    <div class="h-3/4 w-3/4 rounded-2xl bg-white drop-shadow-xl flex flex-row justify-center items-center ">
+        <div class="h-full w-1/5 flex-col">
+            <div class="h-h-custom text-center text-3xl pt-3">Users</div>
+            <hr />
+        </div>
+
+        <!-- message showing body -->
+        <div class="h-full w-3/4 flex flex-col items-center border-2 border-blue-100" >
+            <div class="h-90% w-full m-1 bg-red-200 flex  " id="parentBox" >
+                 <!-- received message will shown here -->
+                 <div class="h-full w-1/2 bg-green-300" id="receiveBox"></div>
+                 <!-- sent message will shown here -->
+                 <div class="h-full w-1/2 bg-blue-300 flex flex-col-reverse" id="sentBox"></div>
+
+
+            </div>
+
+                <!-- below is code for taking input message from user and sent -->
+            <div class="h-h-custom w-full flex flex-row-reverse">
+                <div class="h-full w-24">
+                    <form action="/message">
+                        <!-- <input class="h-20 w-full bg-blue-200 rounded-full" type="submit" value="Send" onclick="myfunction()"/> -->
+                       <!-- <button class="h-20 w-full bg-blue-200 rounded-full" name="sendBtn" id="sendBtn" onclick="myfunction()">Send</button> -->
+                    </form>
+                    <button class="h-full w-full bg-blue-200 rounded-full" name="sendBtn" id="sendBtn" onclick="myfunction()">Send</button>
+                </div>
+
+                <div class="h-full w-5/6 border-2 rounded-lg border-blue-500 mr-4">
+                    <form action="/message">
+                        <textarea class="h-full w-full outline-none" name="message" id="messageBox" rows="2"
+                            cols="30"></textarea>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="w-1/2 bg-blue-200 absolute bottom-0 left-0"><p>${textMessage}</p></div> -->
+
+
+
+    <script>
+        // const parentBox=document.getElementById("parentBox");
+        // const textMessage=document.getElementById("messageBox").value;
+        // const messageHtml=`
+        // <div class="h-20 w-1/2 flex flex-row-reverse bg-blue-200">
+        //     <p>${textMessage}</p>
+        //     </div>
+        // `;
+        // <p class="bg-blue-200 p-4 rounded-xl w-1/2">${textMessage}</p>
+
+        
+
+        function myfunction(){
+            const parentBox=document.getElementById("sentBox");
+            const textMessage=document.getElementById("messageBox").value;
+            const messageHtml=`
+            <p class="bg-yellow-200 p-2 m-1 rounded-xl ">${textMessage}</p>
+            `;
+
+
+            parentBox.insertAdjacentHTML("afterbegin",messageHtml);
+            console.log(textMessage);
+            document.getElementById("messageBox").value="";
+
+        }
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
